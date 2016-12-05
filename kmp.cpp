@@ -12,16 +12,20 @@ int* createTable(string pattern){//create backtracking table
     int j = 0;
     table[0] = 0;
     for(int i=1; i<pattern.length(); i++){
-        while(pattern[i] != pattern[j]){
-            if(j == 0){
-                break;
-            }
-            else{
-                j = table[j-1];
-            }
+        if(pattern[j] == pattern[i]){
+            table[i] = table[j]+1;
         }
-        table[i] = table[j]+1;
-        j++;
+        else{
+            while(pattern[i] != pattern[j]){
+                if(j == 0){
+                    break;
+                }
+                else{
+                    j = table[j-1];
+                }
+            }
+            table[i] = table[j]+1;
+        }
     }
     return table;
 }
