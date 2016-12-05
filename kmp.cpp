@@ -1,5 +1,6 @@
-#include<string>
-#include<kpm.h>
+#include <kpm.h>
+#include <vector>
+#include <string>
 using namespace std;
 
 int* createTable(string pattern){//create backtracking table
