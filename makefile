@@ -4,7 +4,7 @@ FLAGS=-g -std=c++11
 all: build
 
 run: 
-	./final input.txt output.txt
+	./final input.txt abcaby
 
 build: kmp.o driver.o
 	$(GXX) $(FLAGS) kmp.o driver.o -o final
