@@ -6,8 +6,10 @@
 
 using namespace std;
 
+
 int main(int argc, char** argv){//read input and setup for kmp
 	ifstream infile;
+	string pattern = argv[2];
 	vector<string> lines;
 	string line;
     infile.open(argv[1]);
@@ -19,6 +21,8 @@ int main(int argc, char** argv){//read input and setup for kmp
             lines.push_back(line);
         }
     }
+
+	kmp(pattern, lines);
 	
 	return 0;
 }
