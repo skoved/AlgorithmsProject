@@ -6,27 +6,29 @@
 using namespace std;
 
 int* createTable(string pattern){//create backtracking table
-    if(pattern.length() == 0)   
-        return nullptr;
-    int* table = new int[pattern.length()];
+    if(pattern.size() == 0)   
+        return NULL;
+    int* table = new int[pattern.size()];
     int j = 0;
     table[0] = 0;
-    for(int i=1; i<pattern.length(); i++){
+    bool flag = false;
+    for(int i=1; i<pattern.size();){
         if(pattern[j] == pattern[i]){
-            table[i] = table[j]+1;
+            table[i] = j+1;
+            i++;
+            j++;
         }
         else{
-            while(pattern[i] != pattern[j]){
-                if(j == 0){
-                    break;
-                }
-                else{
-                    j = table[j-1];
-                }
+            if(j != 0)
+                j = table[j-1];
+            else{
+                table[i] = 0;
+                i++;
             }
-            table[i] = table[j]+1;
         }
     }
+    for(int i=0; i<pattern.size(); i++)
+        cout<<table[i]<<" ";
     return table;
 }
 
