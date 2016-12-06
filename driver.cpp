@@ -38,7 +38,7 @@ void bruteForce(string pattern, vector<string> input){//brute force algorithm fo
             int next = 1;
             for(int offset = 0; pattern[offset] == text[j+offset]; offset++){
                 if(offset == pattern.size()-1){
-                    output<<"Line "<< i <<", Position "<< j <<endl;
+                    output<<"Line "<< i+1 <<", Position "<< j+1 <<endl;
                     break;
                 }
                 if(text.size() <= j+offset){
