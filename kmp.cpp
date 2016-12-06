@@ -36,8 +36,9 @@ void kmp(string pattern, vector<string> input){
 	int i = 0, j = 0;
 	ofstream output;
 	output.open("output.txt", ios::trunc);
+	
 	for(int q = 0; q < input.size(); q++){
-		while(i < input.at(q).size() && j < pattern.size()){
+		while(i < input.at(q).size()){
 			if(input.at(q)[i] == pattern[j]){
 				i++;
 				j++;
@@ -50,9 +51,9 @@ void kmp(string pattern, vector<string> input){
 					i++;
 				}
 			}
-		}
-		if(j == pattern.size()){
-			output << "Line " << q << ", Position " << i - j << "\n";
+			if(j == pattern.size()){
+				output << "Line " << q + 1 << ", Position " << (i - j) + 1 << "\n";
+			}
 		}
 		i = 0; j = 0;
 	}
