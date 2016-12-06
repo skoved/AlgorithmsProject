@@ -6,6 +6,7 @@
 
 using namespace std;
 
+void bruteForce(string pattern, vector<string> input);
 
 int main(int argc, char** argv){//read input and setup for kmp
 	ifstream infile;
@@ -23,6 +24,29 @@ int main(int argc, char** argv){//read input and setup for kmp
     }
 
 	kmp(pattern, lines);
+    bruteForce(pattern, lines);
 	
 	return 0;
 }
+
+void bruteForce(string pattern, vector<string> input){//brute force algorithm for finding a subsequence
+    ofstream output;
+    output.open("output2.txt", ios::trunc);
+    for(int i = 0; i < input.size(); i++){
+        string text = input[i];//gets the next line of input
+        for(int j = 0; j < text.size(); j++){
+            int next = 1;
+            for(int offset = 0; pattern[offset] == text[j+offset]; offset++){
+                if(offset == pattern.size()-1){
+                    output<<"Line "<< i <<", Position "<< j <<endl;
+                    break;
+                }
+                if(text.size() <= j+offset){
+                    text = text + input[i+next];
+                    next++;
+                }
+            }
+        }
+    }
+}
+                
