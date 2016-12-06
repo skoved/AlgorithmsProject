@@ -27,8 +27,6 @@ int* createTable(string pattern){//create backtracking table
             }
         }
     }
-    for(int i=0; i<pattern.size(); i++)
-        cout<<table[i]<<" ";
     return table;
 }
 
