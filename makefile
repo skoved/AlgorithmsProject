@@ -6,6 +6,9 @@ all: build
 run: 
 	./final input.txt abcaby
 
+debug:
+	gdb ./final input.txt abcaby
+
 build: kmp.o driver.o
 	$(GXX) $(FLAGS) kmp.o driver.o -o final
 
