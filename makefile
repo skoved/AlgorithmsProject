@@ -7,7 +7,6 @@ all: build
 run: 
 	./final input.txt abcaby
 	./final moby.txt the
-	./final random.txt  fklsa
 
 debug: dbuild
 	gdb ./final input.txt abcaby
