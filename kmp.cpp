@@ -30,6 +30,24 @@ int* createTable(string pattern){//create backtracking table
     return table;
 }
 
+void bruteForce(string pattern, vector<string> input){//brute force algorithm for finding a subsequence
+    ofstream output;
+    output.open("output2.txt", ios::trunc);
+    for(int i = 0; i < input.size(); i++){
+        string text = input[i];//gets the next line of input
+        for(int j = 0; j < text.size(); j++){
+            int next = 1;
+            for(int offset = 0; pattern[offset] == text[j+offset]; offset++){
+                if(offset == pattern.size()-1){
+                    output<<"Line "<< i+1 <<", Position "<< j+1 <<endl;
+                    break;
+                }
+            }
+        }
+    }
+    output.close();
+}
+
 void kmp(string pattern, vector<string> input){
 //find and output all instances of the pattern
 	int* table = createTable(pattern);
@@ -58,5 +76,6 @@ void kmp(string pattern, vector<string> input){
 		i = 0; j = 0;
 	}
     delete [] table;
+	output.close();
 	return;
 }
