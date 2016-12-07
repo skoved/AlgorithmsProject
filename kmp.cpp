@@ -57,5 +57,6 @@ void kmp(string pattern, vector<string> input){
 		}
 		i = 0; j = 0;
 	}
+    delete [] table;
 	return;
 }
